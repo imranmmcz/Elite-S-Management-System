@@ -1,0 +1,48 @@
+{
+    "name": "eliteschool/management-system",
+    "description": "Complete Elite School Management ERP System - Production Ready",
+    "type": "project",
+    "keywords": ["school", "management", "erp", "education", "bangladesh"],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "tecnickcom/tcpdf": "^6.6",
+        "phpmailer/phpmailer": "^6.8",
+        "twilio/sdk": "^7.0",
+        "chillerlan/php-qrcode": "^4.3"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "config/db.php",
+            "helpers/functions.php",
+            "helpers/auth_helper.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php -r \"if (!file_exists('uploads')) mkdir('uploads', 0755, true);\"",
+            "@php -r \"if (!file_exists('uploads/students')) mkdir('uploads/students', 0755, true);\"",
+            "@php -r \"if (!file_exists('uploads/staff')) mkdir('uploads/staff', 0755, true);\"",
+            "@php -r \"if (!file_exists('uploads/documents')) mkdir('uploads/documents', 0755, true);\"",
+            "@php -r \"if (!file_exists('uploads/certificates')) mkdir('uploads/certificates', 0755, true);\"",
+            "@php -r \"if (!file_exists('logs')) mkdir('logs', 0755, true);\""
+        ]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
